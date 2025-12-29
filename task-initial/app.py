@@ -4,6 +4,9 @@ from joblib import load
 import numpy as np
 from numpy.typing import ArrayLike
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
 
 def load_and_predict(X: ArrayLike, filename: str = "linear_regression_model.joblib") -> ArrayLike:
     """
@@ -21,7 +24,8 @@ def load_and_predict(X: ArrayLike, filename: str = "linear_regression_model.jobl
         np.ndarray: Predicted value.
     """
     
-    model = load(filename)
+    model_path = BASE_DIR / filename
+    model = load(model_path)
     y = model.predict(X)
     return y
 
