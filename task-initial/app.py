@@ -74,12 +74,11 @@ def visualize_difference(input_feature: float, prediction: ArrayLike):
 
     """
     # Load the X and y datasets
-    X_filename = "X.joblib"
-    y_filename = "y.joblib"
+    X_path = BASE_DIR / "X.joblib"
+    y_path = BASE_DIR / "y.joblib"
 
-    X = np.asarray(load(X_filename)).reshape(-1)
-
-    y = np.asarray(load(y_filename)).reshape(-1)
+    X = np.asarray(load(X_path)).reshape(-1)
+    y = np.asarray(load(y_path)).reshape(-1)
 
     idx_closest = _index_of_closest(X, input_feature)
     actual_feature = float(X[idx_closest])
